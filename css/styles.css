@@ -6,14 +6,14 @@
 :root {
   --brand: #4a2e21;
   --brand-deep: #241610;
-  --cream: #f6f1e9;
-  --cream-2: #f1e9dd;
-  --sand: #ece3d5;
-  --sand-2: #e6ddd0;
-  --tan: #d8b48f;
+  --cream: #ffffff;
+  --cream-2: #ffffff;
+  --sand: #ffffff;
+  --sand-2: #ffffff;
+  --tan: #ffffff;
   --terra: #a06a49;
   --ink: #3a2a20;
-  --muted: #6f5c4e;
+  --muted: lch(40.55% 12.2 63.75);
 
   --ff-serif: 'Marcellus', Georgia, serif;
   --ff-display: 'Cormorant Garamond', Georgia, serif;
@@ -1713,8 +1713,13 @@ body.lb-lock {
   pointer-events: none;
 }
 
-.ad__tag--antes  { left: 12px; }
-.ad__tag--depois { right: 12px; }
+.ad__tag--antes {
+  left: 12px;
+}
+
+.ad__tag--depois {
+  right: 12px;
+}
 
 .ad__range {
   position: absolute;
@@ -1731,8 +1736,13 @@ body.lb-lock {
   cursor: ew-resize;
 }
 
-.ad__range::-webkit-slider-runnable-track { background: transparent; }
-.ad__range::-moz-range-track { background: transparent; }
+.ad__range::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+.ad__range::-moz-range-track {
+  background: transparent;
+}
 
 /* a alça É a linha divisória: mais alta que a moldura e cortada pelo overflow */
 .ad__range::-webkit-slider-thumb {
