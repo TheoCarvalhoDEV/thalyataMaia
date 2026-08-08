@@ -15,3 +15,6 @@ Desktop.ini
 
 # Originais enviados pela arquiteta (já copiados/renomeados em assets/projetos/)
 *INT + RESIDENCIAL/
+
+# Arquivos zip de backup
+*.zip
