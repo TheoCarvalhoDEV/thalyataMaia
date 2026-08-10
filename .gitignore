@@ -1,0 +1,23 @@
+# Material interno de cliente — não publicar
+COMUNICACAO_VISUAL/
+melhorias.txt
+2026*.mp4
+
+# Dependências de ferramentas locais
+tools/node_modules/
+
+# Configuração local do Claude Code
+.claude/
+
+# SO / editor
+Thumbs.db
+Desktop.ini
+
+# Originais enviados pela arquiteta (já copiados/renomeados em assets/projetos/)
+*INT + RESIDENCIAL/
+
+# Arquivos zip de backup
+*.zip
+
+# Originais do Drive (material bruto, nao publicar)
+drive/
