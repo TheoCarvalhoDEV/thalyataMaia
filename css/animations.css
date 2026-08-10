@@ -98,6 +98,7 @@ body.loaded .page-curtain { transform: translateY(-100%); }
 .drawer.is-open .drawer__links a:nth-child(3) { transition-delay: .22s; }
 .drawer.is-open .drawer__links a:nth-child(4) { transition-delay: .28s; }
 .drawer.is-open .drawer__links a:nth-child(5) { transition-delay: .34s; }
+.drawer.is-open .drawer__links a:nth-child(6) { transition-delay: .40s; }
 
 /* =========================================================
    WhatsApp flutuante — anel de aceno periódico
