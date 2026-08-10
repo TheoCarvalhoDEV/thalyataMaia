@@ -18,3 +18,6 @@ Desktop.ini
 
 # Arquivos zip de backup
 *.zip
+
+# Originais do Drive (material bruto, nao publicar)
+drive/

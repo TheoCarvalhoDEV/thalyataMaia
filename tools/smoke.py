@@ -10,7 +10,7 @@ import re
 import sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGINAS = ['index.html', 'hero-bernardes/index.html']
+PAGINAS = ['index.html']
 
 # id/classe que o main.js consulta -> o que deixa de funcionar se sumir
 EXIGIDOS = {

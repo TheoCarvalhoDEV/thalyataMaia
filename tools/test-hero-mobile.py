@@ -1,4 +1,4 @@
-"""Regressao do hero-bernardes no mobile: python tools/test-hero-mobile.py
+"""Regressao do hero (heroB) no mobile: python tools/test-hero-mobile.py
 
 Um swipe tem que avancar exatamente um slide sem a pagina rolar, e a ultima tela
 tem que entregar o scroll pra pagina. Sem o touch-action do .heroB o browser entra
@@ -17,7 +17,7 @@ except ImportError:
     print('playwright ausente — pulando (pip install playwright)')
     raise SystemExit(0)
 
-URL = (pathlib.Path(__file__).resolve().parent.parent / 'hero-bernardes' / 'index.html').as_uri()
+URL = (pathlib.Path(__file__).resolve().parent.parent / 'index.html').as_uri()
 DURACAO = 800
 falhas = []
 
