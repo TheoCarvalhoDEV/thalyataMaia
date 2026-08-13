@@ -25,3 +25,5 @@ projeto existente no `index.html`.
 ## Publicação
 
 Branch `deploy` → Netlify. `git push origin deploy` publica.
+
+link para visualização https://thalytamaia.netlify.app/
