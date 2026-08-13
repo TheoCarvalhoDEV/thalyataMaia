@@ -3,6 +3,9 @@ COMUNICACAO_VISUAL/
 melhorias.txt
 2026*.mp4
 
+# Anotação de DNS (o token vive na zona do domínio, não no site publicado)
+dns.txt
+
 # Dependências de ferramentas locais
 tools/node_modules/
 

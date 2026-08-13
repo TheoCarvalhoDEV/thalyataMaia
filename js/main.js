@@ -272,8 +272,19 @@
       lb.classList.add('is-open');
       lb.setAttribute('aria-hidden', 'false');
       btnClose.focus();
+      autoplay(true);
     }
+    // passagem automática das fotos; qualquer navegação manual reinicia a contagem
+    var timer = null;
+    function autoplay(on) {
+      window.clearInterval(timer); timer = null;
+      if (on && !reduceMotion && galleries[curG].items.length > 1) {
+        timer = window.setInterval(function () { go(1); }, 4000);
+      }
+    }
+
     function close() {
+      autoplay(false);
       lb.classList.remove('is-open');
       lb.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lb-lock');
@@ -283,32 +294,64 @@
       var n = galleries[curG].items.length;
       curI = (curI + dir + n) % n;
       render(true);
+      autoplay(true);
     }
 
     // torna o palco clicável; as miniaturas trocam a foto em destaque
     galleries.forEach(function (g, gi) {
       if (g.palco) {
         var conta = g.media.querySelector('.project__conta');
-        var atual = 0;
-        function destacar(i) {
+        var atual = 0, escolhido = false; // escolhido: veio de clique, não da passagem automática
+        // segunda camada só existe com JS; sem ele a foto original segue visível
+        var camadas = [g.palco.querySelector('img')];
+        var clone = camadas[0].cloneNode(false);
+        clone.classList.add('is-oculta');
+        clone.removeAttribute('id');
+        g.palco.appendChild(clone);
+        camadas.push(clone);
+        var topo = 0;
+
+        function destacar(i, suave) {
           atual = i;
           var it = g.items[i];
-          g.palco.querySelector('img').src = it.src;
-          g.palco.querySelector('img').alt = it.alt;
+          if (!suave || reduceMotion) {
+            camadas[topo].src = it.src; camadas[topo].alt = it.alt;
+          } else {
+            var b = camadas[1 - topo];
+            b.alt = it.alt;
+            function mostrar() {
+              b.classList.remove('is-oculta');
+              camadas[topo].classList.add('is-oculta');
+              topo = 1 - topo;
+            }
+            if (b.getAttribute('src') === it.src) mostrar();
+            else { b.onload = mostrar; b.src = it.src; }
+          }
           if (conta) conta.textContent = (i + 1) + ' / ' + g.items.length;
           g.items.forEach(function (o, j) { o.el.classList.toggle('is-ativa', j === i); });
         }
+        // as fotos do palco também passam sozinhas; clique na miniatura reinicia
+        var passa = null;
+        function passar() {
+          window.clearInterval(passa); passa = null;
+          if (!reduceMotion && g.items.length > 1) {
+            passa = window.setInterval(function () { destacar((atual + 1) % g.items.length, true); }, 4000);
+          }
+        }
         g.items.forEach(function (it, ii) {
-          it.el.addEventListener('click', function () { destacar(ii); });
+          it.el.addEventListener('click', function () { escolhido = true; destacar(ii, true); passar(); });
         });
+        g.media.addEventListener('mouseenter', function () { window.clearInterval(passa); });
+        g.media.addEventListener('mouseleave', passar);
         g.palco.setAttribute('role', 'button');
         g.palco.setAttribute('tabindex', '0');
         g.palco.setAttribute('aria-label', 'Ampliar imagem — ' + g.title);
-        g.palco.addEventListener('click', function () { open(gi, atual, g.palco); });
+        g.palco.addEventListener('click', function () { open(gi, escolhido ? atual : 0, g.palco); });
         g.palco.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(gi, atual, g.palco); }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(gi, escolhido ? atual : 0, g.palco); }
         });
         destacar(0);
+        passar();
       }
     });
 
