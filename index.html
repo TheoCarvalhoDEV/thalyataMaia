@@ -6,10 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f1e9">
   <title>Thalyta Maia · Arquitetura e Interiores</title>
+  <!-- Search Console. Não remover: o Google revalida e revoga a propriedade se a tag sumir. -->
+  <meta name="google-site-verification" content="WpGc7epxKXL1Kd8hod9fI3K4bJ75YfPbBeJyPy1kt0A">
   <script>document.documentElement.className += ' js';</script>
   <meta name="description"
     content="Thalyta Maia — Arquitetura e Interiores. Projetos residenciais e comerciais com sensibilidade, criando ambientes que acolhem e inspiram. Atendimento presencial e online para todo o Brasil.">
-  <link rel="canonical" href="https://theocarvalhodev.github.io/thalytaarq2.0/">
+  <!-- ⚠️ Ao migrar pra domínio próprio, trocar em TODO o repositório (index.html, robots.txt, sitemap.xml).
+       Um canonical apontando pro endereço errado faz o Google ignorar o site inteiro.
+       git grep -l thalytamaia.netlify.app | xargs sed -i 's|thalytamaia.netlify.app|dominio.novo|g' -->
+  <link rel="canonical" href="https://thalytamaia.netlify.app/">
   <link rel="icon" href="assets/images/apple-touch-icon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 
@@ -19,10 +24,10 @@
   <meta property="og:title" content="Thalyta Maia · Arquitetura e Interiores">
   <meta property="og:description"
     content="Projetos residenciais e comerciais com sensibilidade — ambientes que acolhem e inspiram. Atendimento presencial e online para todo o Brasil.">
-  <meta property="og:url" content="https://theocarvalhodev.github.io/thalytaarq2.0/">
-  <meta property="og:image" content="https://theocarvalhodev.github.io/thalytaarq2.0/assets/images/og-thalyta-maia.jpg">
+  <meta property="og:url" content="https://thalytamaia.netlify.app/">
+  <meta property="og:image" content="https://thalytamaia.netlify.app/assets/images/og-thalyta-maia.jpg">
   <meta property="og:image:secure_url"
-    content="https://theocarvalhodev.github.io/thalytaarq2.0/assets/images/og-thalyta-maia.jpg">
+    content="https://thalytamaia.netlify.app/assets/images/og-thalyta-maia.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -35,7 +40,7 @@
   <meta name="twitter:description"
     content="Projetos residenciais e comerciais com sensibilidade — ambientes que acolhem e inspiram.">
   <meta name="twitter:image"
-    content="https://theocarvalhodev.github.io/thalytaarq2.0/assets/images/og-thalyta-maia.jpg">
+    content="https://thalytamaia.netlify.app/assets/images/og-thalyta-maia.jpg">
   <meta name="twitter:image:alt" content="Thalyta Maia — Arquitetura e Interiores">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +53,40 @@
   <link rel="stylesheet" href="css/styles.css?v=14">
   <link rel="stylesheet" href="css/animations.css?v=10">
 
+  <!-- Dados estruturados: quem é, como contatar. Alimenta o painel lateral do Google.
+       Person (e não LocalBusiness) porque o site não divulga endereço físico. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thalyta Maia",
+    "jobTitle": "Arquiteta e Urbanista",
+    "description": "Arquiteta e urbanista (CAU A305121-8). Projetos residenciais e comerciais de arquitetura e interiores, com atendimento presencial e online para todo o Brasil.",
+    "url": "https://thalytamaia.netlify.app/",
+    "image": "https://thalytamaia.netlify.app/assets/images/og-thalyta-maia.jpg",
+    "email": "arquitetathalytamaia@gmail.com",
+    "telephone": "+5565996466782",
+    "areaServed": "BR",
+    "knowsAbout": ["Arquitetura residencial", "Arquitetura comercial", "Design de interiores", "Projeto de reforma", "Ambientação"],
+    "sameAs": ["https://www.instagram.com/thalytamaiaarquitetura/"]
+  }
+  </script>
+
   <style>
+    /* esconde visualmente, mas continua legível por leitores de tela e pelo Google */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* ---- VARIANTE DE HERO (estilo bernardesarq) ---- */
     .heroB {
       position: relative;
@@ -347,6 +385,8 @@
        100vh por vez, 800ms com easing "ease", e uma rolada da roda = exatamente uma
        seção. Sem jQuery e sem as 90 KB do plugin — o controlador está no fim do body. -->
   <section id="hero" class="heroB">
+    <!-- O hero é só imagem: sem este h1 a página não tem nenhum título de nível 1. -->
+    <h1 class="sr-only">Thalyta Maia — Arquitetura e Interiores</h1>
     <div class="heroB__viewport">
       <div class="heroB__track" id="heroBTrack">
         <section class="heroB__slide" style="background-image:url('assets/images/hero-01.webp');--fx:56%">
